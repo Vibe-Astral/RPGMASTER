@@ -1,5 +1,4 @@
 import React from "react";
-
 export default function Header() {
   return (
     <header className="navbar bg-white border-b border-gray-200 shadow-sm px-4">
@@ -30,17 +29,17 @@ export default function Header() {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li><a href="#">Início</a></li>
-            <li><a href="#">Campanhas</a></li>
-            <li><a href="#">Sobre</a></li>
+            <li><a className="text-xl  " href="#">Início</a></li>
+            <li><a className="text-xl" href="#">Campanhas</a></li>
+            <li><a className="text-xl"  href="#">Sobre</a></li>
           </ul>
         </div>
       </div>
 
       {/* Centro */}
       <div className="flex-none">
-        <a className="btn btn-ghost normal-case text-xl font-bold text-primary">
-          RPG Master
+        <a className="btn btn-ghost normal-case text-xl font-bold ">
+          CONFRACTUS
         </a>
       </div>
 
