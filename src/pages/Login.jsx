@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { auth, provider, signInWithPopup, db, doc, setDoc, getDoc } from "../firebase";
+import {
+  auth,
+  provider,
+  signInWithPopup,
+  db,
+  doc,
+  setDoc,
+  getDoc,
+} from "../firebase";
 
 function Login() {
   const [discordId, setDiscordId] = useState(null);
@@ -17,6 +25,9 @@ function Login() {
       const result = await signInWithPopup(auth, provider);
       const u = result.user;
       setUser(u);
+
+      const ref = doc(db, "users", discordId); // declare ref antes de usar
+
       const existing = await getDoc(ref);
       if (!existing.exists()) {
         await setDoc(ref, {
@@ -30,16 +41,9 @@ function Login() {
       } else {
         alert("⚠️ Você já está registrado.");
       }
-      const ref = doc(db, "users", discordId); // salva com ID do Discord
-      await setDoc(ref, {
-        uid: u.uid,
-        email: u.email,
-        displayName: u.displayName,
-        discordId: discordId,
-        createdAt: new Date(),
-      });
 
-      alert("✅ Registro completo! Pode voltar ao Discord.");
+      // Esse setDoc aqui está repetido, você já fez dentro do if.
+      // Pode remover essa repetição para evitar sobrescrever.
     } catch (err) {
       console.error(err);
       alert("Erro ao fazer login. Tente novamente.");
